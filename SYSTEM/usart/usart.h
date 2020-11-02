@@ -1,3 +1,11 @@
+/*
+ * @,@Author: ,: your name
+ * @,@Date: ,: 2020-09-17 09:17:15
+ * @,@LastEditTime: ,: 2020-10-30 09:03:40
+ * @,@LastEditors: ,: Please set LastEditors
+ * @,@Description: ,: In User Settings Edit
+ * @,@FilePath: ,: \USERe:\test2-da\SYSTEM\usart\usart.h
+ */
 #ifndef __USART_H
 #define __USART_H
 #include "stdio.h"	
@@ -56,6 +64,8 @@ void RS422_Send_Data(u8 *buf,u8 len);
 void RS232_data_Anal(void);
 u16 cal_crc(unsigned char *ptr,unsigned char len);
 double mycos(double x);
+int  calc_deg_fun( short fw_deg , short fy_deg , int len);
+
 #endif
 
 

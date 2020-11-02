@@ -82,10 +82,9 @@ void TIM4_PWM_Init(u32  Period , u16 psc , u32 HalfPeriod )
 //	NVIC_InitTypeDef NVIC_InitStructure;
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitType;
 	TIM_OCInitTypeDef TIM_OCInitType;
-	GPIO_InitTypeDef GPIO_InitStructure;  
+
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
 	
-	//TIM_DeInit(TIM4);
 	TIM_TimeBaseInitType.TIM_ClockDivision = TIM_CKD_DIV1;//设置时钟分割:TDTS = Tck_tim
 	TIM_TimeBaseInitType.TIM_CounterMode = TIM_CounterMode_Up;//TIM向上计数模式
 	TIM_TimeBaseInitType.TIM_Prescaler   = psc; //分频值
@@ -165,15 +164,15 @@ void TIM3_IRQHandler(void)
 		if( 2==fuyang_xch_dir )
 		{
 		
-				if ((fuyang_yundong_daowei_flag == 0) && (gul_Targettimeout_temp > 0))
+				if ((fuyang_yundong_daowei_flag == 0) && (fy_ms_count_temp > 0))
 				{
-					gl_currentPos += (ACCEL_TIME_COUNT_VALUE/t4_pwm_value)*FUYANG_MM_PER_STEP;
 
+					fy_currentdeg += FUYANG_DEG_PER_MS;
 				}
-				else if ((fuyang_yundong_daowei_flag == 0) && (gul_Targettimeout_temp < 0))
+				else if ((fuyang_yundong_daowei_flag == 0) && (fy_ms_count_temp < 0))
 				{
-					gl_currentPos -=  (ACCEL_TIME_COUNT_VALUE/t4_pwm_value)*FUYANG_MM_PER_STEP;
 
+					fy_currentdeg -= FUYANG_DEG_PER_MS;
 				}					
 				
 				fuyang_dec_num++;//减速计数，逐渐减小。PWM设定中重装值会逐渐增大，从而速度变慢
@@ -191,8 +190,8 @@ void TIM3_IRQHandler(void)
 						update_accel_flag = 0;
 						
 						fuyang_yundong_daowei_flag = 0;//
-						gb_SHUN_NI = 2;
-						last_gl_currentPos = gl_currentPos;
+						fy_dir = 2;
+
 						fuyang_shezhi_guocheng_flag = 0;		
 						
 						TIM4_PWM_Init( MOTOR_PWM_ARR-1 , 0 , (MOTOR_PWM_ARR-1)/2);//直接以设定速度启动		

@@ -14,28 +14,28 @@
 #define  AMIS30543_SPI_SR4   0x0A
 #define  AMIS30543_SPI2_NSS   PBout(12)
 #define  AMIS30543_SPI3_NSS   PAout(15)
-#define  AMIS30543_DIR1    PCout(11)
-#define  AMIS30543_DIR2    PCout(9)
+#define  FY_DIR    PCout(11)
+#define  FW_DIR    PCout(9)
 #define  AMIS30543_ERR1   PCin(12)
 #define  AMIS30543_ERR2   PCin(8)
 #define motrotype 2
 
 typedef struct
 {
-unsigned char AMIS30543_SPI_ADDR;
-unsigned char AMIS30543_SPI_WDEN;
-unsigned char AMIS30543_SPI_SM;
-unsigned char AMIS30543_SPI_CUR;
-unsigned char AMIS30543_SPI_DIRCTRL;
-unsigned char AMIS30543_SPI_NXTR;
-unsigned char AMIS30543_SPI_PWMF;
-unsigned char AMIS30543_SPI_PWMJ;
-unsigned char AMIS30543_SPI_EMC;
-unsigned char AMIS30543_SPI_MOTEN;
-unsigned char AMIS30543_SPI_SLP;
-unsigned char AMIS30543_SPI_SLAG;
-unsigned char AMIS30543_SPI_SLAT;
-unsigned char AMIS30543_SPI_ESM;
+	unsigned char AMIS30543_SPI_ADDR;
+	unsigned char AMIS30543_SPI_WDEN;
+	unsigned char AMIS30543_SPI_SM;
+	unsigned char AMIS30543_SPI_CUR;
+	unsigned char AMIS30543_SPI_DIRCTRL;
+	unsigned char AMIS30543_SPI_NXTR;
+	unsigned char AMIS30543_SPI_PWMF;
+	unsigned char AMIS30543_SPI_PWMJ;
+	unsigned char AMIS30543_SPI_EMC;
+	unsigned char AMIS30543_SPI_MOTEN;
+	unsigned char AMIS30543_SPI_SLP;
+	unsigned char AMIS30543_SPI_SLAG;
+	unsigned char AMIS30543_SPI_SLAT;
+	unsigned char AMIS30543_SPI_ESM;
 }AMIS30543_RegsCRStruct_TypeDef;
 
 typedef struct

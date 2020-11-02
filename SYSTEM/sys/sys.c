@@ -1,3 +1,11 @@
+/*
+ * @,@Author: ,: your name
+ * @,@Date: ,: 2020-09-17 09:17:15
+ * @,@LastEditTime: ,: 2020-10-30 09:40:32
+ * @,@LastEditors: ,: your name
+ * @,@Description: ,: In User Settings Edit
+ * @,@FilePath: ,: \USERe:\test2-da\SYSTEM\sys\sys.c
+ */
 #include "sys.h"
 
 //////////////////////////////////////////////////////////////////////////////////	 

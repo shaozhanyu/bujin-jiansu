@@ -17,8 +17,8 @@ float  fuyang_dec_num = 40; //减速计数
 float  fangwei_dec_num = 40; //减速计数
 float  add_value = 0;
 float  dec_value =0;
-  u16  t4_pwm_value;//pwm4计数值
-  u16  t5_pwm_value;//pwm5计数值
+u16  t4_pwm_value;//pwm4计数值
+u16  t5_pwm_value;//pwm5计数值
 
 /////////////////////////////////////////////////////////////
 
@@ -68,9 +68,6 @@ int   fangwei_Mortor_Decel( u32  SetSpeed )
 	TIM_Cmd(TIM1, 0);  //关闭1ms定时器
 	decel_cnt2 = 0;
 	
-//	TIM_SetCounter(TIM5 , 1);
-//	TIM_SetAutoreload(TIM5 , t5_pwm_value-1);
-//	TIM_SetCompare1(TIM5 , (t5_pwm_value-1)/2);
 	TIM5_PWM_Init( t5_pwm_value-1 , 0 , (t5_pwm_value-1)/2);//速度递减，PWM值递增
 	
 	TIM2_INIT( (u16)(tim2_accel*10-1) , 7199 );//启动时间片定时器，时间片是固定长的加速总时间/分段片数

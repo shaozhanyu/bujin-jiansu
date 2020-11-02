@@ -4,8 +4,8 @@
 extern unsigned char guc_WorkCurrent;
 extern unsigned char guc_StepDivisor;
 extern unsigned char guc_StepDivisor1;
-extern u8 gb_SHUN_NI;
-extern u8 gb_SHUN_NI1;
+extern u8 fy_dir;
+extern u8 fw_dir;
 extern unsigned char guc_StepM; //细分设置，1，2，8，16
 extern unsigned char guc_StepM1;
 extern float gf_MotorStep;			//步进电机一步旋转的度数1.8
@@ -43,7 +43,7 @@ void AMIS30543_Init1()
 
 	//	 GPIO_ResetBits(GPIOC,GPIO_Pin_11);      //DIR1低电平为0，低电平顺时针旋转，
 	//	 AMIS30543_DIR1 = 0;               //DIR1电平为1的时候，俯仰电机向0的位置转，找限位开关  //DIR1电平为0的时候，俯仰电机向前转，去找下限位开关
-	//	 gb_SHUN_NI = 0;
+	//	 fy_dir = 0;
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_10;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //设置成上拉输入
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
@@ -109,7 +109,7 @@ void AMIS30543_Init2()
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 
 	//	 AMIS30543_DIR2 = 0;     //和俯仰的方向相同
-	//	 gb_SHUN_NI1 = 0;
+	//	 fw_dir = 0;
 	SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
 	SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
 	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
