@@ -246,44 +246,24 @@ int main(void)
 						fangwei_yundong_daowei_flag = 1; //表示电机处于停止状态
 						fw_ms_count_temp=0;
 						fw_currentdeg = 0;				 //表示方位电机的出轴长度实际为0
-						if (fw_reset_flag == 1)
-						{
-								AMIS30543_CR_SPI2.AMIS30543_CR2.bitsSLAG = AMIS30543_SPI_SLAG_gain1;
-								AMIS30543_CR_SPI2.AMIS30543_CR2.bitsMOTEN = AMIS30543_SPI_MOTEN_Disable; //电机未启动
-								SPI2_Byte_Write(AMIS30543_SPI_CR2, AMIS30543_CR_SPI2);
-						}
-						else  if (fw_reset_flag == 0) ////判断当前是要求方位电机归0
-						{
-								FW_DIR = 0;				 //推杆向外伸出，方向使能
-								fw_dir = 0;				 //方位电机逆转
-								fw_timecnt = 0;				 //方位电机计时器开始
-								fangwei_yundong_daowei_flag = 0; //表示电机处于运动状态
-								fw_reset_flag = 1;				 //退出电机复位的标志
-								fw_Init_flag = 1;
-
-								fw_ms_count_temp = 0.0/FANGWEI_DEG_PER_MS; //PWM输出持续ms数
-						
-								fw_ms_count = fw_ms_count_temp;
-								
-								fw_TargetDeg = 0;
-								for (count = 0; count < 12; count++)
-								{
-									AT24c256_storage[count] = RS232_lingwei_shezhi_huifu[count];
-								}
-								TIM_Cmd(TIM5, ENABLE);			 //电机速度设置函数
-								fangwei_shezhi_guocheng_flag = 1;
-								
-						}
+						last_fw_currentdeg = 0.0;
+						fw_reset_flag= 1;
+						fw_Init_flag = 1;
+						AMIS30543_CR_SPI2.AMIS30543_CR2.bitsSLAG = AMIS30543_SPI_SLAG_gain1;
+						AMIS30543_CR_SPI2.AMIS30543_CR2.bitsMOTEN = AMIS30543_SPI_MOTEN_Disable; //电机未启动
+						SPI2_Byte_Write(AMIS30543_SPI_CR2, AMIS30543_CR_SPI2);
+					
 				}
 				
 				//////////////////////俯仰电机限位触发////////////////////////////////////
-				if ((0 == Fuyang_Lmt1) && (fy_dir == 1)&&(!fy_reset_flag)) 
+				if ((0 == Fuyang_Lmt1) && (fy_dir == 0)&&(!fy_reset_flag)) 
 				{
 						TIM_Cmd(TIM4, DISABLE);
 						fuyang_yundong_daowei_flag = 1;
 						fy_ms_count_temp=0;
 						fy_dir = 2;
-						fy_currentdeg = 0;//表示俯仰电机的出轴长度实际为0
+						fy_currentdeg = 631.0;//表示俯仰电机的限位触发后角度是7度，放大100倍
+						last_fy_currentdeg = fy_currentdeg;
 						fy_timecnt = 0;
 						if (fy_reset_flag == 1)
 						{
@@ -295,17 +275,21 @@ int main(void)
 						{
 								fuyang_yundong_daowei_flag = 0;					
 								fy_reset_flag = 1;
-								FY_DIR = 0;
-								fy_dir = 0;
+								FY_DIR = 1;
+								fy_dir = 1;
 								fy_timecnt = 0;
 								fy_Init_flag = 1;
-								fy_ms_count_temp = 0.0/FUYANG_DEG_PER_MS; //PWM输出持续ms数
+								fy_TargetDeg = 0;
+
+								fy_deg_offset = fy_TargetDeg-fy_currentdeg;
+						
+								fy_ms_count_temp = fy_deg_offset/FUYANG_DEG_PER_MS;//PWM输出持续ms数
 						
 								for (count = 0; count < 12; count++)
 								{
 									AT24c256_storage[count] = RS232_lingwei_shezhi_huifu[count];
 								}
-								fy_ms_count = fy_ms_count_temp;
+								fy_ms_count = abs(fy_ms_count_temp);
 								fuyang_shezhi_guocheng_flag = 1;
 								TIM_Cmd(TIM4, ENABLE);
 								
@@ -376,8 +360,8 @@ int Yuntai_jiaodushezhi()
 								AMIS30543_CR_SPI1.AMIS30543_CR2.bitsSLAG = AMIS30543_SPI_SLAG_gain1;
 								AMIS30543_CR_SPI1.AMIS30543_CR2.bitsMOTEN = AMIS30543_SPI_MOTEN_Enable; //电机未启动
 								SPI3_Byte_Write(AMIS30543_SPI_CR2, AMIS30543_CR_SPI1);
-								FY_DIR = 1;
-								fy_dir = 1;//俯仰电机状态正转
+								FY_DIR = 0;
+								fy_dir = 0;//俯仰电机状态正转
 								TIM4_PWM_Init( MOTOR_PWM_ARR-1 , 0 , (MOTOR_PWM_ARR-1)/2);//直接以设定速度启动
 								fuyang_yundong_daowei_flag = 0;//清0运动完成标志，开始运动
 								TIM_Cmd(TIM4, ENABLE);
@@ -396,8 +380,8 @@ int Yuntai_jiaodushezhi()
 							AMIS30543_CR_SPI1.AMIS30543_CR2.bitsMOTEN = AMIS30543_SPI_MOTEN_Enable; //电机未启动
 							SPI3_Byte_Write(AMIS30543_SPI_CR2, AMIS30543_CR_SPI1);
 							TIM4_PWM_Init( MOTOR_PWM_ARR-1 , 0 , (MOTOR_PWM_ARR-1)/2);//直接以设定速度启动					
-							FY_DIR = 0;
-							fy_dir = 0;//俯仰电机状态反转
+							FY_DIR = 1;
+							fy_dir = 1;//俯仰电机状态反转
 							fuyang_yundong_daowei_flag = 0;
 							
 							fy_timecnt = 0;
@@ -505,8 +489,8 @@ int  Yuntai_kongzhi()
 				Yuntai_fuwei_flag = 0;													//复位指令只进一次没有问题
 				FW_DIR = 1;														//和俯仰的方向相同，方位电机的DIR为0时电机向零位靠近
 				fw_dir = 1;														//标志电机正转
-				FY_DIR = 1;														//和俯仰的方向相同，俯仰电机的DIR为0时电机向零位靠近
-				fy_dir = 1;															//标志俯仰电机下转
+				FY_DIR = 0;														//和俯仰的方向相同，俯仰电机的DIR为0时电机向零位靠近
+				fy_dir = 0;															//标志俯仰电机下转
 				fy_reset_flag = 0;														//标志俯仰电机运动进入复位状态
 				fw_reset_flag = 0;														//标志方位电机的运动进入了复位状态
 				if (Fuyang_Lmt1 == 1)													//表示俯仰电机没有在限位

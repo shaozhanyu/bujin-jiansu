@@ -1,6 +1,6 @@
 Dependencies for Project 'TIMER', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (.\main.c)(0x5F9FAE23)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5FA35FD1)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\delay\delay.h)(0x55CC2E5A)
 I (..\SYSTEM\sys\sys.h)(0x5DE5B36E)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
@@ -32,7 +32,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\HARDWARE\TIMER\timer.h)(0x5DE5C218)
-I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5F9B76BC)
+I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5FA34BCB)
 I (..\SYSTEM\usart\usart.h)(0x5F9B6FC1)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5EC775FC)
 I (..\HARDWARE\GPIO\gpio.h)(0x5F8E902D)
@@ -40,7 +40,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5EC775FC)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5EC77604)
 I (..\HARDWARE\2.4G\wifi.h)(0x5F8E8FC5)
 I (..\HARDWARE\24C02\24c02.h)(0x5F8E8FC5)
-I (..\HARDWARE\Motor.h)(0x5F9FA573)
+I (..\HARDWARE\Motor.h)(0x5FA34D19)
 I (..\HARDWARE\PWM.h)(0x5F927C5C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5EC77604)
 F (.\stm32f10x_it.c)(0x4EBEACB0)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_it.o --omf_browse ..\obj\stm32f10x_it.crf --depend ..\obj\stm32f10x_it.d)
@@ -136,11 +136,11 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\HARDWARE\LED\led.h)(0x532ACAF6)
-I (..\HARDWARE\Motor.h)(0x5F9FA573)
-I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5F9B76BC)
+I (..\HARDWARE\Motor.h)(0x5FA34D19)
+I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5FA34BCB)
 I (..\HARDWARE\PWM.h)(0x5F927C5C)
-F (..\HARDWARE\AMIS30543\AMIS30543.c)(0x5F9FA5C5)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\amis30543.o --omf_browse ..\obj\amis30543.crf --depend ..\obj\amis30543.d)
-I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5F9B76BC)
+F (..\HARDWARE\AMIS30543\AMIS30543.c)(0x5FA34C17)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\amis30543.o --omf_browse ..\obj\amis30543.crf --depend ..\obj\amis30543.d)
+I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5FA34BCB)
 I (..\SYSTEM\sys\sys.h)(0x5DE5B36E)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
@@ -295,8 +295,8 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\HARDWARE\PWM.h)(0x5F927C5C)
-I (..\HARDWARE\Motor.h)(0x5F9FA573)
-I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5F9B76BC)
+I (..\HARDWARE\Motor.h)(0x5FA34D19)
+I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5FA34BCB)
 I (..\SYSTEM\sys\sys.h)(0x5DE5B36E)
 I (..\HARDWARE\TIMER\timer.h)(0x5DE5C218)
 F (..\HARDWARE\PWM.c)(0x5F9FA49E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\pwm.o --omf_browse ..\obj\pwm.crf --depend ..\obj\pwm.d)
@@ -329,8 +329,8 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\HARDWARE\PWM.h)(0x5F927C5C)
-I (..\HARDWARE\Motor.h)(0x5F9FA573)
-I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5F9B76BC)
+I (..\HARDWARE\Motor.h)(0x5FA34D19)
+I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5FA34BCB)
 I (..\SYSTEM\sys\sys.h)(0x5DE5B36E)
 F (..\SYSTEM\delay\delay.c)(0x5DE5BCE6)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
 I (..\SYSTEM\delay\delay.h)(0x55CC2E5A)
@@ -426,9 +426,9 @@ I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\SYSTEM\usart\usart.h)(0x5F9B6FC1)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5EC775FC)
 I (..\HARDWARE\GPIO\gpio.h)(0x5F8E902D)
-I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5F9B76BC)
+I (..\HARDWARE\AMIS30543\AMIS30543.h)(0x5FA34BCB)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5EC77604)
-I (..\HARDWARE\Motor.h)(0x5F9FA573)
+I (..\HARDWARE\Motor.h)(0x5FA34D19)
 F (..\CORE\core_cm3.c)(0x4C0C587E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\TIMER -I ..\HARDWARE\AMIS30543 -I ..\HARDWARE\GPIO -I ..\HARDWARE\GPIO -I ..\HARDWARE\2.4G -I ..\HARDWARE\24C02 -I ..\HARDWARE-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="531" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\core_cm3.o --omf_browse ..\obj\core_cm3.crf --depend ..\obj\core_cm3.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5EC775FC)
 F (..\CORE\startup_stm32f10x_hd.s)(0x5F961B82)(--cpu Cortex-M3 -g --apcs=interwork -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 531" --pd "STM32F10X_HD SETA 1"--list .\startup_stm32f10x_hd.lst --xref -o ..\obj\startup_stm32f10x_hd.o --depend ..\obj\startup_stm32f10x_hd.d)

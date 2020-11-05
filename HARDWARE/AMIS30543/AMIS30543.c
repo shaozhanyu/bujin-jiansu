@@ -353,7 +353,7 @@ u8 SPI3_Byte_Write(unsigned char addr, AMIS30543_CR DATA)
 }
 void AMIS30543_INIT1()
 {
-	switch (motrotype) //电机最大相电流
+	switch (FY_MOTOR_TYPE) //电机最大相电流
 	{
 	case 1:
 		AMIS30543_CR_SPI1.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_1060;
@@ -381,7 +381,7 @@ void AMIS30543_INIT1()
 	switch (guc_WorkCurrent)
 	{
 	case 0: //0.25
-		switch (motrotype)
+		switch (FY_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI1.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_245;
@@ -398,7 +398,7 @@ void AMIS30543_INIT1()
 		}
 		break;
 	case 1: //0.5
-		switch (motrotype)
+		switch (FY_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI1.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_540;
@@ -415,7 +415,7 @@ void AMIS30543_INIT1()
 		}
 		break;
 	case 2: //0.75
-		switch (motrotype)
+		switch (FY_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI1.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_780;
@@ -432,7 +432,7 @@ void AMIS30543_INIT1()
 		}
 		break;
 	case 3: //1
-		switch (motrotype)
+		switch (FY_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI1.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_1060;
@@ -513,7 +513,7 @@ void AMIS30543_INIT1()
 }
 void AMIS30543_INIT2()
 {
-	switch (motrotype) //电机最大相电流
+	switch (FW_MOTOR_TYPE) //电机最大相电流
 	{
 	case 1:
 		AMIS30543_CR_SPI2.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_1060;
@@ -542,7 +542,7 @@ void AMIS30543_INIT2()
 	switch (guc_WorkCurrent1)
 	{
 	case 0: //0.25
-		switch (motrotype)
+		switch (FW_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI2.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_245;
@@ -559,7 +559,7 @@ void AMIS30543_INIT2()
 		}
 		break;
 	case 1: //0.5
-		switch (motrotype)
+		switch (FW_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI2.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_540;
@@ -576,7 +576,7 @@ void AMIS30543_INIT2()
 		}
 		break;
 	case 2: //0.75
-		switch (motrotype)
+		switch (FW_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI2.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_780;
@@ -593,7 +593,7 @@ void AMIS30543_INIT2()
 		}
 		break;
 	case 3: //1
-		switch (motrotype)
+		switch (FW_MOTOR_TYPE)
 		{
 		case 1:
 			AMIS30543_CR_SPI2.AMIS30543_CR0.bitsCUR = AMIS30543_SPI_CUR_1060;

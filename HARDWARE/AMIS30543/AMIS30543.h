@@ -18,7 +18,8 @@
 #define  FW_DIR    PCout(9)
 #define  AMIS30543_ERR1   PCin(12)
 #define  AMIS30543_ERR2   PCin(8)
-#define motrotype 2
+#define  FY_MOTOR_TYPE          3
+#define  FW_MOTOR_TYPE          2
 
 typedef struct
 {

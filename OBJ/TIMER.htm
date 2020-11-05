@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\TIMER.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\TIMER.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 02 14:58:43 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 05 10:13:51 2020
 <BR><P>
 <H3>Maximum Stack Usage =        160 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -261,7 +261,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6a]"></a>Yuntai_jiaodushezhi</STRONG> (Thumb, 1166 bytes, Stack size 24 bytes, main.o(.text))
+<P><STRONG><a name="[6a]"></a>Yuntai_jiaodushezhi</STRONG> (Thumb, 1168 bytes, Stack size 24 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Yuntai_jiaodushezhi &rArr; TIM5_PWM_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
@@ -304,7 +304,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[54]"></a>main</STRONG> (Thumb, 802 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[54]"></a>main</STRONG> (Thumb, 788 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = main &rArr; SysInit &rArr; AMIS30543_INIT2 &rArr; SPI2_Byte_Write &rArr; SPI2_ReadWriteByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
@@ -327,6 +327,10 @@ Global Symbols
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jiaodu_send
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Yuntai_jiaodushezhi
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysInit
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
@@ -1836,6 +1840,7 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fuyang_Mortor_Decel
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fangwei_Mortor_Decel
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AMIS30543_INIT2
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Yuntai_jiaodushezhi
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysInit
 </UL>
@@ -1848,7 +1853,8 @@ Global Symbols
 <P><STRONG><a name="[6e]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2iz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jiaodu_send
+<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jiaodu_send
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Yuntai_jiaodushezhi
 </UL>
 
@@ -1875,6 +1881,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calc_deg_fun
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Yuntai_jiaodushezhi
 </UL>
 
@@ -1956,6 +1963,7 @@ Global Symbols
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fuyang_Mortor_Decel
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Yuntai_jiaodushezhi
 </UL>
 

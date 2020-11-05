@@ -7,7 +7,9 @@
 //每次修改PWM时，为了更准确不产生小数点，从PWM设定值设计为整数倍，所以转速导致不是整数值，没关系
 #define  DEC_TIME_VALUE  2.0
 #define  ACCEL_NUM   10.0  //速度分段加速分片次数
-#define  MOTOR_PWM_ARR          1400.0  //128细分，200步，2圈/S则51200脉冲数/秒。对应72000000/51200 =1406.25。为了加速设定不产生小数取1400
+#define  MOTOR_PWM_ARR          2800.0  //128细分，200步，2圈/S则51200脉冲数/秒。对应72000000/51200 =1406.25。为了加速设定不产生小数取1400
+#define  FY_MOTOR_PWM_ARR       2800.0  //128细分，200步，2圈/S则51200脉冲数/秒。对应72000000/51200 =1406.25。为了加速设定不产生小数取1400
+
 #define  ACCEL_TIME_COUNT_VALUE   (72.0*(DEC_TIME_VALUE/ACCEL_NUM)*1000000)  //不分频72M时0.2S加速时间片的PWM输出次数值，用于和PWM重装值比较，可以知道时间片内输出了多少PWM脉冲
 #define  ONE_MS_TIME_COUNT_VALUE  (72.0*1000/MOTOR_PWM_ARR)  //1ms时间，PWM由于没有分频，则1ms时间走过PWM输出的脉冲数MOTOR_PWM_ARR的N倍
 #define  MM_PER_STEP              ((1.27/200)/128.0)
@@ -15,8 +17,8 @@
 #define  FUYANG_STEP_COUNT_PER_MM        (128.0*200.0/1.5875)    //每mm包含的脉冲数，即脉冲当量
 #define  FUYANG_MM_PER_STEP              ((1.5875/200.0)/128.0)
 
-#define  FANGWEI_DEG_PER_MS               (2.0*360/90.0/1000.0*100)   //每ms方位电机转动的角度0.01度分辨率。120r/m
-#define  FUYANG_DEG_PER_MS                (2.0*360/252.0/1000.0*100)   //每ms俯仰电机转动的角度。120r/m
+#define  FANGWEI_DEG_PER_MS               (1.0*360/90.0/1000.0*100)   //每ms方位电机转动的角度0.01度分辨率。120r/m
+#define  FUYANG_DEG_PER_MS                (1.0*360/252.0/1000.0*100)   //每ms俯仰电机转动的角度。120r/m
 
 ////////////////////////////////////////////////////////
 extern  double fw_currentdeg; //方位当前角度
