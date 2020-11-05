@@ -262,7 +262,7 @@ int main(void)
 						fuyang_yundong_daowei_flag = 1;
 						fy_ms_count_temp=0;
 						fy_dir = 2;
-						fy_currentdeg = 631.0;//表示俯仰电机的限位触发后角度是7度，放大100倍
+						fy_currentdeg = 610.0;//表示俯仰电机的限位触发后角度是7度，放大100倍
 						last_fy_currentdeg = fy_currentdeg;
 						fy_timecnt = 0;
 						if (fy_reset_flag == 1)
