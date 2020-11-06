@@ -193,13 +193,13 @@ void RS232_data_Anal()
 	{
 		for (i = 0; i < last_RS422_byte_count; i++)
 		{
-			if ((RS422_receive_str[i] == 0xdb) && (RS422_receive_str[i + 1] == 0xdc))//判断中间数据有0XC0的转义。0xdb和0xdc联合表示一个0xc0
+			if ((rx_buf[i] == 0xdb) && (rx_buf[i + 1] == 0xdc))//判断中间数据有0XC0的转义。0xdb和0xdc联合表示一个0xc0
 			{
 				i++;
 				RS232_receive_str[t] = 0xc0;
 				t++;
 			}
-			else if ((RS422_receive_str[i] == 0xdb) && (RS422_receive_str[i + 1] == 0xdd))
+			else if ((rx_buf[i] == 0xdb) && (rx_buf[i + 1] == 0xdd))
 			{
 				i++;
 				RS232_receive_str[t] = 0xdb;
@@ -211,7 +211,7 @@ void RS232_data_Anal()
 				t++;
 			}
 		}
-		crc_check = cal_crc(RS232_receive_str, (t - 2)); //RS232_receive_str数组是完全没有转义之前的数组
+		crc_check = cal_crc(RS232_receive_str, (t - 2)); 
 		crc_result1 = (short)((RS232_receive_str[t - 2] << 8) | RS232_receive_str[t - 1]);
 
 		if (crc_check == crc_result1)
