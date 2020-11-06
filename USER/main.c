@@ -12,6 +12,8 @@
 #include "PWM.h"
 #include "stdio.h"
 #include "string.h"
+#include "usart.h"
+
 
 #define LMTMAXCOUNT 2
 
@@ -150,6 +152,9 @@ int  SysInit(void)
 		psc = (unsigned short)(72000000 / gul_FirstFreq);	//每个脉冲PWM对应重装周期定时值	1406//计算俯仰电机速度对应的定时器的输入参数
 		psc1 = (unsigned short)(72000000 / gul_FirstFreq1);						  //计算方位电机速度对应的定时器的输入参数
 		RS232_Send_Data(RS232_Auto_output, 6);									  //设置倾角仪的函数
+		delay_ms(1000);
+		RS232_Send_Data(RS232_Auto_output, 6);									  //设置倾角仪的函数
+		delay_ms(1000);
 		AT24c256_dta_Anal();													  //解析存储的数据
 		AMIS30543_NXT1_init(MOTOR_PWM_ARR - 1, (u16)((MOTOR_PWM_ARR - 1) / 2));//设置PWM，每秒51208个方波脉冲
 		AMIS30543_NXT2_init(MOTOR_PWM_ARR - 1, (u16)((MOTOR_PWM_ARR - 1) / 2));
@@ -162,13 +167,14 @@ int main(void)
 {
 	
 	u8 count=0;																  //用于赋值零位的计数
-	
+	int i=0;
 	delay_init();															  //延时函数初始化
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);							  //设置系统中断优先级分组2
 	uart_init(115200);														  //与上位机的通讯波特率设置为115200
 	UARST2_Init(9600);														  //与电子罗盘的通讯波特率设置为9600
 	GPIO_Jiance_Init();														  //限位检测初始化
-		
+	delay_ms(1000);	
+	delay_ms(1000);	
 	AMIS30543_Init1();														  //俯仰电机驱动初始化
 	AMIS30543_Init2();														  //方位电机初始化
 	TIM1_Int_Init(9, 7199 , ENABLE);														  //1ms定时器初始化
@@ -180,10 +186,38 @@ int main(void)
 	{
 		
 		///////////////上位机指令解析//////////////////
+
+		if( rx_time>10 && RS422_byte_count > 5  )
+			RS232_receive_flag =1;
+		
 		if (RS232_receive_flag == 1) //表示接收到上位机的数据
 		{
 				RS232_receive_flag = 0;		  //标志位清零
-				RS232_data_Anal();			  //数据解析函数
+				i=0;
+				rx_cnt=0;
+				while(1)
+				{
+					
+						if(i>=RS422_byte_count)
+							break;
+						
+						if( (RS422_receive_str[i] == 0xc0) && (rx_cnt==0))//判断是第一次0XC0
+						{
+							rx_cnt = 0;							
+						}
+						else if (RS422_receive_str[i] != 0xc0)
+						{
+							rx_buf[rx_cnt++] = RS422_receive_str[i];
+						}
+						else if ((RS422_receive_str[i]  == 0xc0) && (rx_cnt > 2) )//判断是末尾的0XC0
+						{
+							last_RS422_byte_count = rx_cnt;
+							RS422_byte_count = 0;
+							RS232_data_Anal();			  //数据解析函数
+				
+						}
+						i++;
+				}
 				memset(RS422_receive_str , 0 ,sizeof(RS422_receive_str));
 			  RS422_byte_count=0;				
 			

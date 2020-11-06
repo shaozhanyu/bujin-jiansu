@@ -39,7 +39,10 @@
 #define crc_mul 0x1021
 
 extern  u8 RS422_byte_count;
-
+extern long rx_time;
+extern long rx_cnt;
+extern u8 last_RS422_byte_count;
+extern  u8 rx_buf[50];
 
 union IntToChar
 {

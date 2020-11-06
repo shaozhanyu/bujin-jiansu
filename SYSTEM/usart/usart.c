@@ -58,6 +58,9 @@ u8 Res;
 u8 last_Res;
 u8 RS422_receive_str[30]; //接收到的数据
 u8 RS232_receive_str[30]; //回复
+u8 rx_buf[50];
+long rx_cnt=0;
+long rx_time=0;
 u8 RS422_byte_count;
 u8 last_RS422_byte_count;
 u8 RS232_receive_flag;
@@ -130,24 +133,9 @@ void USART1_IRQHandler(void) //串口1中断服务程序
 		if (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == SET)
 		{
 			Res = USART_ReceiveData(USART1); //读取接收到的数据
+			RS422_receive_str[RS422_byte_count++]=Res;
+			rx_time =0;
 		}
-		if ((Res == 0xc0) && ((last_Res == 0) || (last_Res == 0xC0)))
-		{
-			RS422_byte_count = 0;
-		}
-		else if (Res != 0xc0)
-		{
-			RS422_receive_str[RS422_byte_count] = Res;
-			RS422_byte_count++;
-		}
-		else if ((Res == 0xc0) && (RS422_byte_count != 0) && (RS422_byte_count != 1))
-		{
-			last_RS422_byte_count = RS422_byte_count;
-			RS422_byte_count = 0;
-			RS232_receive_flag = 1;
-			//				  RS232_data_Anal();
-		}
-		last_Res = Res;
 	}
 #if SYSTEM_SUPPORT_OS //如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
 	OSIntExit();
@@ -205,7 +193,7 @@ void RS232_data_Anal()
 	{
 		for (i = 0; i < last_RS422_byte_count; i++)
 		{
-			if ((RS422_receive_str[i] == 0xdb) && (RS422_receive_str[i + 1] == 0xdc))
+			if ((RS422_receive_str[i] == 0xdb) && (RS422_receive_str[i + 1] == 0xdc))//判断中间数据有0XC0的转义。0xdb和0xdc联合表示一个0xc0
 			{
 				i++;
 				RS232_receive_str[t] = 0xc0;
@@ -219,7 +207,7 @@ void RS232_data_Anal()
 			}
 			else
 			{
-				RS232_receive_str[t] = RS422_receive_str[i];
+				RS232_receive_str[t] = rx_buf[i];
 				t++;
 			}
 		}
@@ -239,7 +227,7 @@ void RS232_data_Anal()
 	{
 		flag=0;
 
-		switch(RS422_receive_str[0])
+		switch(RS232_receive_str[0])
 		{
 			case 1:Yuntai_ID_flag = 1;
 			break;
@@ -247,11 +235,11 @@ void RS232_data_Anal()
 			break;
 			case 3:
 				Yuntai_kongzhi_flag = 1;
-				if (RS422_receive_str[3] == 0x01)
+				if (RS232_receive_str[3] == 0x01)
 				{
 					Yuntai_fuwei_flag = 1;
 				}
-				if (RS422_receive_str[3] == 0x00)
+				if (RS232_receive_str[3] == 0x00)
 				{
 					if((0==fangwei_xch_dir) &&(0==fuyang_xch_dir) )
 						Yuntai_tingzhi_flag = 1;

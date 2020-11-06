@@ -34,3 +34,5 @@
 ..\obj\timer.o: ..\HARDWARE\Motor.h
 ..\obj\timer.o: ..\HARDWARE\AMIS30543\AMIS30543.h
 ..\obj\timer.o: ..\HARDWARE\PWM.h
+..\obj\timer.o: ..\SYSTEM\usart\usart.h
+..\obj\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

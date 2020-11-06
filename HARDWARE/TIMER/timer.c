@@ -2,6 +2,7 @@
 #include "led.h"
 #include "Motor.h"
 #include "PWM.h"
+#include "usart.h"
 //通用定时器中断初始化
 //这里时钟选择为APB1的2倍，而APB1为36M
 //arr：自动重装值。
@@ -110,6 +111,8 @@ void TIM1_UP_IRQHandler(void)
 		{
 			guc_10mscnt++;
 		}	
+		
+		rx_time++;
 		
 		if ((fuyang_yundong_daowei_flag == 0) && (fy_ms_count_temp > 0))
 		{
